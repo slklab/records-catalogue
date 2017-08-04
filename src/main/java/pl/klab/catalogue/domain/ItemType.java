@@ -1,8 +1,8 @@
 package pl.klab.catalogue.domain;
 
 public enum ItemType {
-    LONG_PLAY("LP"),
-    COMPACT_DISC("CD");
+    LP("Long Play"),
+    CD("Compact Disc");
 
     String itemCode;
 

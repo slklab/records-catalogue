@@ -23,15 +23,15 @@ public class ItemsController {
     private ItemRepository repository;
 
     @RequestMapping(value="/{itemId}", method=RequestMethod.GET)
-    public HttpEntity<Item> getItem(@PathVariable Long itemId) {
+    public ResponseEntity<Item> getItem(@PathVariable Long itemId) {
         Item itemById = repository.getItemById(itemId);
         return new ResponseEntity(itemById, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/", method=RequestMethod.GET)
-    public HttpEntity<Item> getItems() {
+    @RequestMapping(method=RequestMethod.GET)
+    public ResponseEntity<List<Item>> getItems() {
         List<Item> items = repository.findAll();
-        return new ResponseEntity(items, HttpStatus.OK);
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 
 }

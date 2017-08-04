@@ -1,5 +1,7 @@
 package pl.klab.catalogue.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,9 +13,9 @@ public class Item {
 
     private String name;
 
-//    @Enumerated(EnumType.STRING)
-//    @Column(name="item_type")
-//    private ItemType type;
+    @Enumerated(EnumType.STRING)
+    @Column(name="item_type")
+    private ItemType type;
 
     public Long getId() {
         return id;
@@ -31,20 +33,20 @@ public class Item {
         this.name = name;
     }
 
-//    public ItemType getType() {
-//        return type;
-//    }
-//
-//    public void setType(ItemType type) {
-//        this.type = type;
-//    }
+    public ItemType getType() {
+        return type;
+    }
+
+    public void setType(ItemType type) {
+        this.type = type;
+    }
 
     @Override
     public String toString() {
         return "Item{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                //", type=" + type +
+                ", type=" + type +
                 '}';
     }
 
@@ -58,7 +60,7 @@ public class Item {
 
         return new org.apache.commons.lang3.builder.EqualsBuilder()
                 .append(name, item.name)
-             //   .append(type, item.type)
+                .append(type, item.type)
                 .isEquals();
     }
 
@@ -66,7 +68,7 @@ public class Item {
     public int hashCode() {
         return new org.apache.commons.lang3.builder.HashCodeBuilder(17, 37)
                 .append(name)
-             //   .append(type)
+                .append(type)
                 .toHashCode();
     }
 }
